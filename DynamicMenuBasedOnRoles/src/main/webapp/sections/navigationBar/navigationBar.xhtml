@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<h:form styleClass="tool-bar" id="toolBarFor">
+	   <p:growl id="growl" />
+		<p:menubar id="menuBar">
+			<c:forEach items="#{loginController.userMenu}" var="subMenu">
+				<p:submenu label="#{subMenu.menuType.name}"
+					id="subMenu#{subMenu.menuId}">
+					<c:forEach items="#{subMenu.subMenus}" var="menu">
+						<p:menuitem value="#{menu.sunMenuType.name}"
+							 id="menuItemsubMenu#{menu.subMenuId}"
+							onclick="doMenuAction([{name:'commandName', value:'#{menu.sunMenuType.name}'}]);" />
+						<p:separator />
+					</c:forEach>
+				</p:submenu>
+			</c:forEach>
+			<p:submenu label="Setting" id="menuButt">
+				<p:menuitem value="Change Theme" id="menuItemTheme"
+					onclick="dlg1.show(); return false;" type="button" />
+					<p:separator />
+				<p:menuitem value="Logout" id="menuItemLogout"
+					action="#{loginController.doLogout}" type="button" />
+			</p:submenu>
+			<f:facet name="options">
+			    <p:outputLabel style="margin-right:10px" value="Logged in as : #{userController.userRoles}"/>
+				<p:inputText style="margin-right:10px" placeholder="Search" />
+			</f:facet>
+		</p:menubar>
+		<p:remoteCommand name="doMenuAction" partialSubmit="true"
+				actionListener="#{loginController.doMenuAction}" update=":toolBarFor:growl"/>
+
+	</h:form>
+</ui:composition>

@@ -1,0 +1,15 @@
+insert into users(id,password,theme,username) values (1,'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3','home','gtechoman');
+insert into roles(id,role_name) values (1,'ADMIN');
+insert into roles(id,role_name) values (2,'USER');
+insert into roles(id,role_name) values (3,'BROKER');
+insert into user_role(user_id,role_id) values (1,1);
+insert into menus(id,menu_action,menu_name,role_id) values (1,'http://www.gtechoman.com/','ROLE',1);
+insert into menus(id,menu_action,menu_name,role_id) values (2,'http://www.gtechoman.com/','EDIT',1);
+insert into menus(id,menu_action,menu_name,role_id) values (3,'http://www.gtechoman.com/','HELP',1);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (1,'http://www.gtechoman.com/','CREATE',1);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (2,'http://www.gtechoman.com/','DELETE',1);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (3,'http://www.gtechoman.com/','UPDATE',1);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (4,'http://www.gtechoman.com/','PROFILE',2);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (5,'http://www.gtechoman.com/','SEARCH',3);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (6,'http://www.gtechoman.com/','READ',3);
+insert into sub_menus(id,action_url,sub_menu_name,menu_id) values (7,'http://www.gtechoman.com/','CONTENT',3);

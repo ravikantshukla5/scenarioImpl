@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+	<p:dialog id="dlgCreateRoles" widgetVar="dlgForCreateRoles"
+		header="Create Role And User" modal="true">
+		<h:form id="linkForm" style="margin:0px 0px">
+			   <p:inputText id="userName" value="#{userController.userDto.username}" required="true" style="width: 276px;height: 26px" label="username"/>
+			   <p:message for="userName"/>
+			   <p:watermark value="Enter User Name.." for="userName"/><br/>
+			   <p:inputText id="password" value="#{userController.userDto.password}" required="true" style="width: 276px;height: 26px" label="Title"/>
+			   <p:message for="password"/>
+			   <p:watermark value="Enter password..." for="password"/><br/>
+			   <p:selectManyMenu value="#{userController.userDto.userRoles}" style="width: 97%;">
+			      <f:selectItem itemLabel="[Select Roles]" itemValue=""/>
+			      <f:selectItems value="#{userController.roles}"/>
+			   </p:selectManyMenu><br/>
+			   <p:selectManyMenu value="#{userController.userDto.menus}" style="width: 97%;">
+			      <f:selectItem itemLabel="[Select Menus]" itemValue=""/>
+			      <f:selectItems value="#{userController.menus}"/>
+			   </p:selectManyMenu><br/>
+			   <p:commandButton value="Create" oncomplete="dlgForCreateRoles.hide();return false;" update=":toolBarFor:growl"
+			               actionListener="#{userController.createRoles}" style="background: #3399FF;padding-top: 0px;margin-top: -10px;float:right">
+			   </p:commandButton><p:spacer width="20px"/>
+			   <p:commandLink value="Cancel" 
+			                    onclick="dlgForCreateRoles.hide();return false;">
+			   </p:commandLink>
+			</h:form>
+	</p:dialog>
+</ui:composition>

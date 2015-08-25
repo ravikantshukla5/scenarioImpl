@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view contentType="text/html" locale="en">
+	<h:head>
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+			<meta http-equiv="pragma" content="no-cache" />
+			<meta http-equiv="cache-control" content="no-cache" />
+			<meta http-equiv="expires" content="0" />
+		</f:facet>
+		<f:facet name="last">
+			<link rel="shortcut icon" type="image/x-icon"
+				href="#{request.contextPath}/resources/img/paatha-logo.jpg" />
+		</f:facet>
+	</h:head>
+
+	<h:body style="background:url('/resources/images/frontPage.jpg') fixed no-repeat;" >
+
+		<div >
+			<div>
+				<h2>Welcome to Scenario Implementation</h2>
+				<p>Scenario Implementation</p>
+			</div>
+			<h:form id="loginForm">
+				<p:focus context="loginForm" />
+				<h2>Sign in</h2>
+				<h:messages style="color:red" />
+				<p:inputText
+					value="#{loginBean.username}" id="username" required="true"
+					label="Email" /><br/><br/>
+				<p:watermark for="username" value="Enter your Email" />
+				<p:password
+					value="#{loginBean.password}" id="pass" required="true"
+					label="Password" /><br/><br/>
+				<p:watermark for="pass" value="Enter password" />
+				<p:commandButton
+					value="Sign in" update="loginForm"
+					action="#{loginController.verifyLogin}"
+					onclick="PrimeFaces.cleanWatermarks();"
+					oncomplete="PrimeFaces.showWatermarks();" />
+			</h:form>
+		</div>
+	</h:body>
+</f:view>
+</html>
